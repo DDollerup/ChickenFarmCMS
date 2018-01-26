@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Proper CMS - @ViewBag.Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="~/Areas/Admin/Content/CSS/main-columns.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/CSS/main-cms.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    @RenderSection("CSS", false)
+
+</head>
+<body>
+    @if (TempData["SYS_MSG"] != null)
+    {
+        <div id="sys-msg">
+            @TempData["SYS_MSG"]
+        </div>
+    }
+    <main>
+        <div>
+            @ViewBag.Title
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+    </main>
+    <nav>
+        <div>
+            Proper CMS
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <div><i class="material-icons">dashboard</i></div><div><a href="/Admin/CMS/Index">Dashboard</a></div>
+                </li>
+                <li>
+                    <div><i class="material-icons">home</i></div><div>
+                        Sider
+                        <ul>
+                            <li><div><i class="material-icons">subject</i></div><div><a href="/Admin/CMS/EditFrontPage">Forside</a></div></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="material-icons">apps</i></div><div>
+                        Categories
+                        <ul>
+                            <li>
+                                <div><i class="material-icons">edit</i></div><div><a href="/Admin/CMS/Categories">Edit</a></div>
+                            </li>
+                            <li>
+                                <div><i class="material-icons">add_to_queue</i></div><div><a href="/Admin/CMS/AddCategory">Add Category</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="material-icons">apps</i></div><div>
+                        Products
+                        <ul>
+                            <li>
+                                <div><i class="material-icons">edit</i></div><div><a href="/Admin/CMS/Products">Edit</a></div>
+                            </li>
+                            <li>
+                                <div><i class="material-icons">add_to_queue</i></div><div><a href="/Admin/CMS/AddProduct">Add Product</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="material-icons">apps</i></div><div>
+                        Activities
+                        <ul>
+                            <li>
+                                <div><i class="material-icons">edit</i></div><div><a href="/Admin/CMS/Activities">Edit</a></div>
+                            </li>
+                            <li>
+                                <div><i class="material-icons">add_to_queue</i></div><div><a href="/Admin/CMS/AddActivity">Add Activity</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="material-icons">apps</i></div><div>
+                        Articles
+                        <ul>
+                            <li>
+                                <div><i class="material-icons">edit</i></div><div><a href="/Admin/CMS/Articles">Edit</a></div>
+                            </li>
+                            <li>
+                                <div><i class="material-icons">add_to_queue</i></div><div><a href="/Admin/CMS/AddArticle">Add Article</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="material-icons">vpn_key</i></div><div><a href="/Admin/CMS/LogoutSubmit" onclick="return confirm('Are you sure you wish to logout?')">Logout</a></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    @RenderSection("JS", false)
+</body>
+</html>

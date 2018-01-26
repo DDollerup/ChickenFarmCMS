@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "AddActivity";
+}
+<script src="~/Areas/Admin/Plugins/ckeditor/ckeditor.js"></script>
+<form action="/Admin/CMS/AddActivitySubmit" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <label for="Name">Name</label>
+        </div>
+        <div class="col-12">
+            <input type="text" required placeholder="Name" name="Name" />
+        </div>
+        <div class="col-12">
+            <label for="Description">Description</label>
+        </div>
+        <div class="col-12">
+            <textarea name="Description" id="Description" required></textarea>
+        </div>
+        <div class="col-12">
+            <input type="submit" value="Add Activity" />
+        </div>
+    </div>
+</form>
+<script>
+    CKEDITOR.replace('Description', { height: 360, autoGrow_onStartup: true });
+</script>

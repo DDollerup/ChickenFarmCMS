@@ -1,0 +1,66 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "Products";
+}
+
+<div class="row">
+    <div class="col-12">
+        <p>
+            Here, you can edit or delete @ViewBag.Title elements.
+        </p>
+    </div>
+</div>
+<div class="col-12">
+    <input type="text" id="dataInput" placeholder="Search for @ViewBag.Title by name" onkeyup="simpleSearch('#dataInput','[data-searchFilter]','#clearBtn')" /><button id="clearBtn">Clear</button>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="cmsTable">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            @if (Model.Count < 1)
+            {
+                <tr>
+                    <td colspan="3">There was no results avaliable.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (Product item in Model)
+                {
+                    <tr data-searchFilter="@(item.Name)">
+                        <td>@item.ID</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a href="/Admin/CMS/EditProduct/@item.ID"><i class="material-icons">edit</i></a>
+                            <a href="/Admin/CMS/DeleteProductSubmit/@item.ID" onclick="return confirm('Are you sure?')"><i class="material-icons">delete_forever</i></a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    function simpleSearch(dataInput, dataAttr, clearBtn) {
+        var input = $(dataInput).val().toUpperCase();
+        $(dataAttr).each(function () {
+            var attr = dataAttr.replace('[', '').replace(']', '');
+            if (this.getAttribute(attr).toUpperCase().indexOf(input) > -1) {
+                this.style.display = "";
+            }
+            else {
+                this.style.display = "none";
+            }
+        });
+
+        $(clearBtn).click(function () {
+            $(dataInput).val('');
+            simpleSearch(dataInput, dataAttr, clearBtn);
+        });
+    }
+</script>

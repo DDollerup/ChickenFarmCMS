@@ -1,0 +1,39 @@
+﻿@model FrontPage
+@{
+    ViewBag.Title = "Edit FrontPage";
+}
+
+<script src="~/Areas/Admin/Plugins/ckeditor/ckeditor.js"></script>
+
+<div class="row">
+    <form action="/Admin/CMS/EditFrontPageSubmit" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="ID" value="@Model.ID" />
+        <input type="hidden" name="Image" value="@Model.Image" />
+
+        <div class="col-12">
+            <label for="Title">Title</label>
+        </div>
+        <div class="col-12">
+            <input type="text" required name="Title" placeholder="Title..." value="@Model.Title" />
+        </div>
+        <div class="col-12">
+            <label for="PageContent">Page Content</label>
+        </div>
+        <div class="col-12">
+            <textarea required name="PageContent" id="PageContent">@Model.PageContent</textarea>
+        </div>
+        <div class="col-12">
+            <label for="Image">Image</label>
+        </div>
+        <div>
+            <input type="file" name="imageFile" />
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    </form>
+</div>
+
+<script>
+    CKEDITOR.replace('PageContent', {height: 360, autoGrow_onStartup: true});
+</script>

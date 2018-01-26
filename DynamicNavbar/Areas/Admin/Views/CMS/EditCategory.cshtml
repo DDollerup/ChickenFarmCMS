@@ -1,0 +1,20 @@
+﻿@model Category
+@{
+    ViewBag.Title = "Edit Category";
+}
+
+
+<form action="/Admin/CMS/EditCategorySubmit" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <div class="row">
+        <div class="col-12">
+            <label for="Name">Name</label>
+        </div>
+        <div class="col-12">
+            <input type="text" required placeholder="Name" name="Name" value="@Model.Name" />
+        </div>
+        <div class="col-12">
+            <input type="submit" value="Edit Category" />
+        </div>
+    </div>
+</form>

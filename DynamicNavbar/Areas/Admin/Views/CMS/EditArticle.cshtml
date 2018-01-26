@@ -1,0 +1,49 @@
+﻿@model Article
+@{
+    ViewBag.Title = "Edit Article";
+}
+
+<script src="~/Areas/Admin/Plugins/ckeditor/ckeditor.js"></script>
+<form action="/Admin/CMS/EditArticleSubmit" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <input type="hidden" name="Image" value="@Model.Image" />
+    <input type="hidden" name="Date" value="@Model.Date" />
+    <div class="row">
+        <div class="col-12">
+            <label for="Date">Date</label>
+        </div>
+        <div class="col-12">
+            <span>@Model.Date</span>
+        </div>
+        <div class="col-12">
+            <label for="Title">Title</label>
+        </div>
+        <div class="col-12">
+            <input type="text" required placeholder="Title" name="Title" value="@Model.Title" />
+        </div>
+        <div class="col-12">
+            <label for="Description">Description</label>
+        </div>
+        <div class="col-12">
+            <textarea name="Description" id="Description" required>@Model.Description</textarea>
+        </div>
+        <div class="col-12">
+            <label>Current Image</label>
+        </div>
+        <div class="col-12">
+            <img class="img-responsive" src="~/Content/Images/@Model.Image" />
+        </div>
+        <div class="col-12">
+            <label for="ImageFile">Image</label>
+        </div>
+        <div class="col-12">
+            <input type="file" name="ImageFile" />
+        </div>
+        <div class="col-12">
+            <input type="submit" value="Edit Activity" />
+        </div>
+    </div>
+</form>
+<script>
+    CKEDITOR.replace('Description', { height: 360, autoGrow_onStartup: true });
+</script>

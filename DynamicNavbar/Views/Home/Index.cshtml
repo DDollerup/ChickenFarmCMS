@@ -1,0 +1,12 @@
+﻿@model FrontPage
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Model.Title</h2>
+<hr />
+<p>
+    @Html.Raw(Model.PageContent)
+</p>
+<img src="~/Content/Images/@Model.Image" class="img-responsive" />
+

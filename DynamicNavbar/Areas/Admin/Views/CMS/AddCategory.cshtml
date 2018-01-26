@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "AddCategory";
+}
+
+<form action="/Admin/CMS/AddCategorySubmit" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <label for="Name">Name</label>
+        </div>
+        <div class="col-12">
+            <input type="text" required placeholder="Name" name="Name" />
+        </div>
+        <div class="col-12">
+            <input type="submit" value="Add Category" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,87 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Edit Product";
+}
+
+<script src="~/Areas/Admin/Plugins/ckeditor/ckeditor.js"></script>
+
+<form action="/Admin/CMS/EditProductSubmit" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <input type="hidden" name="Image" value="@Model.Image" />
+    <div class="row">
+        <div class="col-12">
+            <label for="Name">Name</label>
+        </div>
+        <div class="col-12">
+            <input type="text" required name="Name" placeholder="Name..." value="@Model.Name" />
+        </div>
+        <div class="col-12">
+            <label for="Description">Description</label>
+        </div>
+        <div class="col-12">
+            <textarea name="Description" id="Description" required>@Model.Description</textarea>
+        </div>
+        <div class="col-12">
+            <label>Current Image</label>
+        </div>
+        <div class="col-12">
+            <img src="~/Content/Images/@Model.Image" class="img-responsive" />
+        </div>
+        <div class="col-12">
+            <label for="ImageFile">Image</label>
+        </div>
+        <div class="col-12">
+            <input type="file" name="ImageFile" />
+        </div>
+        <div class="col-12">
+            <label for="EggWeight">Egg Weight</label>
+        </div>
+        <div class="col-12">
+            <input type="text" name="EggWeight" placeholder="Egg Weight..." required value="@Model.EggWeight" />
+        </div>
+        <div class="col-12">
+            <label for="ShellColor">Shell Color</label>
+        </div>
+        <div class="col-12">
+            <input type="text" name="ShellColor" placeholder="Shell Color..." required value="@Model.ShellColor" />
+        </div>
+        <div class="col-12">
+            <label for="MaleWeight">Male Weight</label>
+        </div>
+        <div class="col-12">
+            <input type="text" name="MaleWeight" placeholder="Male Weight..." required value="@Model.MaleWeight" />
+        </div>
+        <div class="col-12">
+            <label for="FemaleWeight">Female Weight</label>
+        </div>
+        <div class="col-12">
+            <input type="text" name="FemaleWeight" placeholder="Female Weight..." required value="@Model.FemaleWeight" />
+        </div>
+        <div class="col-12">
+            <label for="CategoryID">Category</label>
+        </div>
+        <div class="col-12">
+            <select name="CategoryID" required>
+                <option value="">Choose Category</option>
+                @foreach (Category item in ViewBag.Categories)
+                {
+                    if (item.ID == Model.CategoryID)
+                    {
+                        <option value="@item.ID" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.ID">@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-12">
+            <input type="submit" value="Edit Product" />
+        </div>
+    </div>
+</form>
+
+<script>
+    CKEDITOR.replace('Description', { height: 360, autoGrow_onStartup: true });
+</script>
